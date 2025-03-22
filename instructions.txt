@@ -67,3 +67,5 @@
 15 'meta argument', second way for multi instance creation
     foreach ratherthen a 'count = 3'
     also change output, in case of foreach
+
+    note: each used to provent same instance name or otherthing repeation
