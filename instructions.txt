@@ -1,0 +1,57 @@
+01  terraform.tf 
+    aws provider   
+
+
+02  providers.tf
+    here region defined
+
+03 ec2.tf
+    ec2 instance
+    https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair
+    https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_vpc
+    https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_security_group
+
+04 ssh gen
+   ssh keygen
+   terra-key
+
+05 terraform init
+06 terraform plan
+
+07 allow permissions to user
+   iam -> users -> terra-ali -> add permissions -> addminstratorAccess ->save
+
+08 terraform apply -auto-approve
+09 terraform destroy -auto-approve
+
+10 variables work
+   variables.tf
+
+
+11 output (ec2 output like a ip etc all)
+   outputs.tf
+
+   output:
+        ghulam@ghulam-HP-ProBook-650-G5:/var/www/html/terraform-for-devops/terraform-learning$ terraform apply -auto-approve
+        aws_key_pair.my_key: Refreshing state... [id=terra-key]
+        aws_default_vpc.default: Refreshing state... [id=vpc-09208225745dbbf45]
+        aws_security_group.my_security_group: Refreshing state... [id=sg-077e1d391795fc2ec]
+        aws_instance.my_instance: Refreshing state... [id=i-0f7fffd7c2ee5a426]
+
+        Changes to Outputs:
+            + ec2_pirvate_ip = "172.31.12.145"
+            + ec2_public_dns = "ec2-43-204-229-125.ap-south-1.compute.amazonaws.com"
+            + ec2_public_ip  = "43.204.229.125"
+
+        You can apply this plan to save these new output values to the Terraform state, without changing any real infrastructure.
+
+        Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+        Outputs:
+
+        ec2_pirvate_ip = "172.31.12.145"
+        ec2_public_dns = "ec2-43-204-229-125.ap-south-1.compute.amazonaws.com"
+        ec2_public_ip = "43.204.229.125"
+
+12 install nginx
+    install_nginx.sh
