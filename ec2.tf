@@ -64,14 +64,38 @@ resource "aws_security_group" "my_security_group" {
     }
 }
 
-# step3 EC2 instance
+# step3 EC2 instance, 'with or without count meta based' 
+# resource "aws_instance" "my_instance" {
+#     count = 3 # number of instances
+#     ami           = var.ec2_ami  # ubuntu OS, AMI(amazon machine image)
+#     instance_type = var.aws_instance_type # instance type
+#     key_name      = aws_key_pair.my_key.key_name #step 1
+#     security_groups = [aws_security_group.my_security_group.name]     # step 2
+#     tags = { 
+#         Name = "Terraform-Instance"  # instance name
+#     }
+#     user_data = file("install_nginx.sh")
+#     root_block_device {
+#         volume_size = var.aws_root_storage_size # volume size
+#         volume_type = "gp3" # volume type
+#     }
+# }
+
+
+# step3 EC2 instance, 'each meta based' 
 resource "aws_instance" "my_instance" {
+    for_each = tomap({
+        "instance1" = "t2.micro",
+        "instance2" = "t2.small",
+        "instance3" = "t2.medium"
+    })
+
     ami           = var.ec2_ami  # ubuntu OS, AMI(amazon machine image)
     instance_type = var.aws_instance_type # instance type
     key_name      = aws_key_pair.my_key.key_name #step 1
     security_groups = [aws_security_group.my_security_group.name]     # step 2
     tags = { 
-        Name = "Terraform-Instance"  # instance name
+        Name = each.key  # instance name based on each key
     }
     user_data = file("install_nginx.sh")
     root_block_device {

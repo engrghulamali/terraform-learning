@@ -55,3 +55,15 @@
 
 12 install nginx
     install_nginx.sh
+
+
+13 multi instance creation
+    01- add 'count in my_instance block
+    02- also change the output, about ip's
+
+14 instances types (spot[bidding due to large instance available]/on-demaind[fix price of each, due to short instance available])
+    :- this point only for knowldge. 
+
+15 'meta argument', second way for multi instance creation
+    foreach ratherthen a 'count = 3'
+    also change output, in case of foreach
