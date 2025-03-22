@@ -80,5 +80,41 @@
         -> Remote state Backends
             . AWS S3 for Remote storage
             . State Locking with DynamoDB
+
+18  All states listing
+    terraform state list
+
+19  Specific State Details        
+    terraform state show aws_key_pair.my_key
+
+
+20  if deleted a any state.
+    terraform rm aws_key_pair.my_key
+
+    can be recovered via a import from  aws.
+    for example: 
+                terraform import aws_key_pair.my_key key-id-from-aws
+
+
+21  Secure state
+    Issue: we can't push a state file on a git, second if two developers have a seprate states files
+           with a different instance counts.
+    
+    sol: 
+        -> Remote state Backends
+            . AWS S3 for Remote storage
+            . State Locking with DynamoDB(schema less, no table etc)
+
+21  new folder 'Remote infra'
+        s3.tf file
+        https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+
+        dynamodb.tf file
+
+        providers.tf
+
+        terraform.tf
+
         
-18
+
+04:40 class timing.
