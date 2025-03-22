@@ -69,3 +69,16 @@
     also change output, in case of foreach
 
     note: each used to provent same instance name or otherthing repeation
+
+16 depends_on meta argument
+    depends_on = [ aws_security_group.my_security_group, aws_key_pair.my_key ]
+
+17  Most Important Topic
+    => Terraform State Management & Backends
+        -> Role of state in infrastructure Management
+        -> Secure state Management best practices
+        -> Remote state Backends
+            . AWS S3 for Remote storage
+            . State Locking with DynamoDB
+        
+18

@@ -90,6 +90,8 @@ resource "aws_instance" "my_instance" {
         "instance3" = "t2.medium"
     })
 
+    depends_on = [ aws_security_group.my_security_group, aws_key_pair.my_key ]
+
     ami           = var.ec2_ami  # ubuntu OS, AMI(amazon machine image)
     instance_type = var.aws_instance_type # instance type
     key_name      = aws_key_pair.my_key.key_name #step 1
