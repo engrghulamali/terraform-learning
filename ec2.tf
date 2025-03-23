@@ -14,6 +14,7 @@ resource "aws_key_pair" "my_key" {
 resource "aws_default_vpc" "default" {
     tags = {
         Name = "Default VPC"
+        Environment = var.env
     }
 }
 
