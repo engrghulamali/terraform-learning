@@ -98,6 +98,7 @@ resource "aws_instance" "my_instance" {
     security_groups = [aws_security_group.my_security_group.name]     # step 2
     tags = { 
         Name = each.key  # instance name based on each key
+        Environment = var.env
     }
     user_data = file("install_nginx.sh")
     root_block_device {

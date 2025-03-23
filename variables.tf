@@ -15,3 +15,10 @@ variable "ec2_ami" {
     default     = "ami-0e35ddab05955cf57"
     type = string
 }
+
+variable "env" {
+    description = "The environment in which the resources are created"
+    default     = "prd"
+    type = string
+  
+}
