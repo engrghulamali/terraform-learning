@@ -133,4 +133,12 @@
 27  terraform Refresh
 28  delete the state file or backup from, root, but state list is still showing details due to lock file
 29  terraform state list
-30  
+
+
+30  terraform workspace list
+    showing default.
+    Note: same concept as a branches in git. here workspaces.
+
+31  terraform workspace new dev
+32  terraform workspace select default
+    output: switched to workspace 'default'
