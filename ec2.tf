@@ -14,6 +14,7 @@ resource "aws_key_pair" "my_key" {
 resource "aws_default_vpc" "default" {
     tags = {
         Name = "Default VPC"
+        Environment = var.env
     }
 }
 
@@ -62,6 +63,10 @@ resource "aws_security_group" "my_security_group" {
         protocol    = "-1"
         cidr_blocks = ["0.0.0.0/0"]
     }
+    tags = {
+      Name = "${var.env}-automate-sg"
+      Environment = var.env
+    }
 }
 
 # step3 EC2 instance, 'with or without count meta based' 
@@ -85,9 +90,8 @@ resource "aws_security_group" "my_security_group" {
 # step3 EC2 instance, 'each meta based' 
 resource "aws_instance" "my_instance" {
     for_each = tomap({
-        "instance1" = "t2.micro",
-        "instance2" = "t2.small",
-        "instance3" = "t2.medium"
+        "dev instance1" = "t2.micro",
+        "dev instance2" = "t2.small"
     })
 
     depends_on = [ aws_security_group.my_security_group, aws_key_pair.my_key ]
@@ -98,6 +102,7 @@ resource "aws_instance" "my_instance" {
     security_groups = [aws_security_group.my_security_group.name]     # step 2
     tags = { 
         Name = each.key  # instance name based on each key
+        Environment = var.env
     }
     user_data = file("install_nginx.sh")
     root_block_device {
