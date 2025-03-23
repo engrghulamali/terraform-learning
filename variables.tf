@@ -15,3 +15,9 @@ variable "ec2_ami" {
     default     = "ami-0e35ddab05955cf57"
     type = string
 }
+
+variable "env" {
+    description = "The environment to deploy to"
+    default     = "dev"
+    type = string
+}
