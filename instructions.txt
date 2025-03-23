@@ -78,7 +78,7 @@
         -> Role of state in infrastructure Management
         -> Secure state Management best practices
         -> Remote state Backends
-            . AWS S3 for Remote storage
+            . AWS S3 for Remotef storage
             . State Locking with DynamoDB
 
 18  All states listing
@@ -105,16 +105,32 @@
             . AWS S3 for Remote storage
             . State Locking with DynamoDB(schema less, no table etc)
 
-21  new folder 'Remote infra'
+21  new folder 'remote-infra'
         s3.tf file
-        https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
+           https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 
         dynamodb.tf file
-
+            https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dynamodb_table
+    
         providers.tf
-
+            region defined
+            
         terraform.tf
+            https://registry.terraform.io/providers/hashicorp/aws/latest/docs
 
-        
+        run below commands in 'remote-infra' table.
+            terraform init
+            terraform plan
+            terraform apply -auto-approve
 
-04:40 class timing.
+
+
+22  define a Backend in root path terraform.tf, provider block
+23  terraform init (due to change in terraform.tf file) 
+24  terraform plan
+25  terraform apply -auto-approve
+26  terraform state list
+27  terraform Refresh
+28  delete the state file or backup from, root, but state list is still showing details due to lock file
+29  terraform state list
+30  

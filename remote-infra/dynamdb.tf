@@ -1,18 +1,17 @@
 resource "aws_dynamodb_table" "basic-dynamodb-table" {
-    name           = "tws-dynamodb-table"
+    name           = "terraform-learning-dynamodb-table"
     billing_mode   = "PROVISIONED"
-    read_capacity  = 20
-    write_capacity = 20
     hash_key       = "LockID"
-    range_key      = "GameTitle"
 
+    read_capacity  = 5  # Set the number of read capacity units per second
+    write_capacity = 5  # Set the number of write capacity units per second
     attribute {
         name = "LockID"
         type = "S"
     }
 
     tags = {
-        Name        = "tws-dynamodb-table"
+        Name        = "terraform-learning-dynamodb-table"
         Environment = "production"
     }
 }
